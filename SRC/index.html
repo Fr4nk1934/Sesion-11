@@ -1,12 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sesion 11</title>
     <link rel="stylesheet" href="STYLES/Styles.css">
 </head>
+
 <body>
-    
+    <header class="encabezado">
+        <center>
+            <h2>
+                Verificación de Calificaciones
+            </h2>
+        </center>
+    </header>
+    <main class="cuerpo">
+        <center>
+            <table>
+                <tr>
+                    <td>
+                        <ul>
+                            <li><input type="number" id="num1" placeholder="Calificación entre 0 - 100"></li>
+                        </ul>
+                    </td>
+                    <td>
+                        <button onclick="calcular()">Calcular</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h4><span id="resultado"></span></h4>
+                    </td>
+                </tr>
+            </table>
+
+            <h2>Determinación Numero Par o Impar</h2>
+            <table>
+                <tr>
+                    <td>
+                        <ul>
+                            <li><input type="number" id="num2" placeholder="Ingrese un Numrero"></li>
+                        </ul>
+                    </td>
+                    <td>
+                        <button onclick="comprobar()">Calcular</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h4><span id="modular"></span></h4>
+                    </td>
+                </tr>
+            </table>
+            <h2>Evaluación de Descuentos</h2>
+            <table>
+                <tr>
+                    <td>
+                        <ul>
+                            <li><input type="number" id="num3" placeholder="Ingrese monto total"></li>
+                        </ul>
+                    </td>
+                    <td>
+                        <button onclick="descuento()">Calcular</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h4><span id="total"></span></h4>
+                        <h4><span id="total1"></span></h4>
+                    </td> 
+                </tr>
+                <tr>
+                    <td>
+
+                    </td>
+                </tr>
+            </table>
+            <h2>Juego Adivinanza De Números</h2>
+            <table>
+                <tr>
+                    <td>
+                        <ul>
+                            <li><input type="number" id="num4" placeholder="Ingrese un Numero"></li>
+                        </ul>
+                    </td>
+                    <td>
+                        <button onclick="adivinar()">Calcular</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h4><span id="igualdad"></span></h4>
+                    </td>
+                </tr>
+            </table>
+            <h2>Arreglo Números y Calcula Suma Total</h2>
+            <table>
+                <tr>
+
+                </tr>
+                <tr>
+                    
+                </tr>
+            </table>
+        </center>
+    </main>
+    <br>
+    <footer class="piepagina">
+        <center>
+            &copy; Frank Alvarez España
+        </center>
+    </footer>
+
+    <script>
+        function calcular() {
+            const a = parseFloat(document.getElementById("num1").value);
+            const resultado = document.getElementById("resultado");
+
+            if (isNaN(a)) {
+                resultado.textContent = "Ingrese una calificación válida";
+                return;
+            }
+
+            if (a >= 90) {
+                resultado.textContent = "Aprobado con Honores";
+            } else if (a >= 70) {
+                resultado.textContent = "Aprobado";
+            } else {
+                resultado.textContent = "Reprobado";
+            }
+        }
+        function comprobar() {
+            const b = parseFloat(document.getElementById("num2").value);
+            const comprobacion = document.getElementById("modular");
+
+            if (isNaN(b)) {
+                comprobacion.textContent = "Ingrese un numero";
+                return;
+            }
+
+            if (b % 2 === 0) {
+                comprobacion.textContent = "Es Par";
+            } else {
+                comprobacion.textContent = "Es Impar";
+            }
+        }
+        function descuento(){
+            const c = parseFloat(document.getElementById("num3").value);
+            const total = document.getElementById("total");
+
+            if (isNaN(c)) {
+                total.textContent = "Ingrese un monto valido";
+                return;
+            }
+            if(c>100){
+                let descontar = c - 0.1*c;
+                total.textContent = "Aplica Descuento";
+                total1.textContent = "Total a pagar: "+ descontar;
+            }else {
+                total.textContent ="No aplica descuento";
+            }
+        }
+        function adivinar(){
+            const d = parseFloat(document.getElementById("num4").value);
+            const igualdad = document.getElementById("igualdad");
+            let number1 = Math.floor(Math.random()*10);
+
+            if (isNaN(d)) {
+                igualdad.textContent = "Ingrese un numero";
+                return;
+            }
+            if (d == number1){
+                igualdad.textContent = "¡Felicidades, adivinaste el número";
+            }else{
+                igualdad.textContent = "Lo siento, el numero era:"+ number1;                
+            }
+        }
+    </script>
 </body>
+
 </html>
